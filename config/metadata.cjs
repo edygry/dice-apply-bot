@@ -7,20 +7,22 @@ const {
 
 module.exports = {
   name: {
-    $: "webpack-userscript-template",
-    cn: "中文名",
-    en: "english name",
+    $: "dice-auto-apply",
   },
-  namespace: "https://trim21.me/",
+  namespace: "",
   version: version,
   author: author,
   source: repository.url,
   // 'license': 'MIT',
-  match: ["*://www.example.com/", "*://example.com/*"],
+  match: ["*://www.dice.com/jobs*"],
   require: [
-    `https://cdn.jsdelivr.net/npm/jquery@${dependencies.jquery}/dist/jquery.min.js`,
+    // `https://cdn.jsdelivr.net/npm/jquery@${dependencies.jquery}/dist/jquery.min.js`,
   ],
-  grant: ["GM.xmlHttpRequest"],
-  connect: ["httpbin.org"],
+  grant: [
+    // "GM.xmlHttpRequest"
+  ],
+  connect: [
+    // "httpbin.org"
+  ],
   "run-at": "document-end",
 };
