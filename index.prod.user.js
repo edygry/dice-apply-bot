@@ -20,14 +20,14 @@ function sleep(ms) {
 async function apply_page_logic(win) {
   // var doc = win.document
   // console.log(doc)
-  await sleep(6000);
+  await sleep(8000);
   var button_outer = win.document.querySelector("apply-button-wc");
   console.log(button_outer);
   win.document
     .querySelector("apply-button-wc")
     .shadowRoot.querySelector(".btn.btn-primary")
     .click();
-  await sleep(2000);
+  await sleep(4000);
   var steps_text = win.document.querySelector("progress-bar").label;
   var total_steps = Number(steps_text.split("of")[1].trim());
   for (let index = 0; index < total_steps; index++) {
