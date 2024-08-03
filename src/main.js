@@ -40,7 +40,8 @@ async function job_loop() {
   );
   for (let index = 0; index < job_list.length; index++) {
     const element = job_list[index];
-
+    document.querySelector("#my_main_content").innerHTML =
+      `${index}/${job_list.length}`;
     await job_apply(element);
   }
 }
