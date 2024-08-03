@@ -11,23 +11,28 @@ async function apply_page_logic(win) {
     .querySelector("apply-button-wc")
     .shadowRoot.querySelector(".btn.btn-primary")
     .click();
-  await sleep(4000);
+  await sleep(2000);
   var steps_text = win.document.querySelector("progress-bar").label;
   var total_steps = Number(steps_text.split("of")[1].trim());
   for (let index = 0; index < total_steps; index++) {
     win.document.querySelector(".btn-next").click();
     await sleep(2000);
   }
-  await sleep(3000);
+  await sleep(2000);
 }
 async function job_apply(element) {
-  var job_id = element.querySelector(".card-title-link.normal").id;
-  var job_link = `https://www.dice.com/job-detail/${job_id}`;
-  var win = window.open(job_link);
-  // win.onload = async()=>
-  await apply_page_logic(win);
+  var win;
+  try {
+    var job_id = element.querySelector(".card-title-link.normal").id;
+    var job_link = `https://www.dice.com/job-detail/${job_id}`;
+    win = window.open(job_link, "", "width=800,height=600");
+    // win.onload = async()=>
+    await apply_page_logic(win);
 
-  win.close();
+    win.close();
+  } catch {
+    win.close();
+  }
 }
 async function job_loop() {
   var job_list = Array.from(
@@ -35,6 +40,7 @@ async function job_loop() {
   );
   for (let index = 0; index < job_list.length; index++) {
     const element = job_list[index];
+
     await job_apply(element);
   }
 }
